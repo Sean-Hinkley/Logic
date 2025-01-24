@@ -21,7 +21,7 @@ public class MyGame extends Game  {
         }
         
 	public void update() {
-
+                gc.update();
         }
 	
 	public void draw(Graphics pen) {   

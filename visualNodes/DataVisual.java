@@ -16,7 +16,10 @@ public class DataVisual {
 
     public void add(int x, int y) {
         Ping p = new Ping("ping");
+        System.out.println(selected);
+        
         pings.add(p);
+        
         visuals.add(new VisualPing(p, x, y));
     }
 
@@ -44,13 +47,21 @@ public class DataVisual {
         return pings.get(n);
     }
 
+    public int indexOf(VisualPing vp) {
+        return visuals.indexOf(vp);
+    }
+
+    public int indexOf(Ping p) {
+        return pings.indexOf(p);
+    }
+
     public void draw(Graphics pen) {
         for(int x = 0; x < visuals.size(); x++) {
             VisualPing vp = visuals.get(x);
             if(vp!=null) { 
                 vp.draw(pen);
                 if(vp.equals(selected)) {
-                    System.out.println(vp.equals(selected));
+                    //System.out.println(vp.equals(selected));
                     vp.drawSelect(pen); 
                 }
             }
@@ -59,7 +70,8 @@ public class DataVisual {
     }
 
     public void update() {
-
+        
+        pings.get(0).ping(true);
     }
 
     public void setSelected(VisualPing vp) {
@@ -73,7 +85,7 @@ public class DataVisual {
                 
                 return visuals.get(n);
                 
-            } else {
+            } else if (mc==1 && !(visuals.get(n).collision(x, y))) {
                 selected = null;
             }
         }

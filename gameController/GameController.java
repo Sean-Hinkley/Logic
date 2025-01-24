@@ -21,6 +21,7 @@ public class GameController {
         this.h = h;
 
         dv.add(100, 200);
+        dv.getData(0).ping(true);
     }
 
     public void draw(Graphics pen) {
@@ -34,7 +35,7 @@ public class GameController {
     }
 
     public void update() {
-
+        dv.update();
     }
 
     
